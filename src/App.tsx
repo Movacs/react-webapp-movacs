@@ -1,11 +1,13 @@
 import './App.css'
+import AppBackground from './components/background/AppBackground'
+
 
 function App() {
   return (
     <div>
-      <h1>Hello</h1>
-    </div>
+      <AppBackground animation={false} />
 
+    </div>
   )
 }
 
