@@ -7,7 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function ButtonAppBar() {
+type Props = {
+    toggleAnimation: () => void;
+}
+
+export default function ButtonAppBar({ toggleAnimation }: Props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -24,7 +28,7 @@ export default function ButtonAppBar() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         News
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button onClick={toggleAnimation} color="inherit">Animation</Button>
                 </Toolbar>
             </AppBar>
         </Box>
