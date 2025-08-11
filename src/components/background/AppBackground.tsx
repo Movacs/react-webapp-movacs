@@ -9,7 +9,7 @@ type Props = {
     animation?: boolean;
 };
 
-const AppBackground = ({ numStars = 400, animation = true, glow = animation, trails = animation }: Props) => {
+const AppBackground = ({ numStars = 400, animation = true, glow = false, trails = false }: Props) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const starsRef = useRef<Star[]>([]);
     const animationRef = useRef<number>(0);
@@ -21,7 +21,7 @@ const AppBackground = ({ numStars = 400, animation = true, glow = animation, tra
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        const resizeCanvas = () => {
+        const initCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             const W = canvas.width;
@@ -29,25 +29,26 @@ const AppBackground = ({ numStars = 400, animation = true, glow = animation, tra
             const hW = W / 2;
             const hH = H / 2;
 
-            starsRef.current = Array.from({ length: numStars }, () => {
-                return new Star({
-                    ctx,
-                    W,
-                    H,
-                    hW,
-                    hH,
-                    minV: 2,
-                    maxV: 8,
-                    color: { r: 200, g: 200, b: 255, a: 0.5 },
-                    glow,
-                    trails,
-                    addTasks: () => { },
+            if (starsRef.current.length === 0) {
+                starsRef.current = Array.from({ length: numStars }, () => {
+                    return new Star({
+                        ctx,
+                        W,
+                        H,
+                        hW,
+                        hH,
+                        minV: 2,
+                        maxV: 8,
+                        color: { r: 200, g: 200, b: 255, a: 0.5 },
+                        glow,
+                        trails,
+                    });
                 });
-            });
+            }
         };
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        initCanvas();
+        window.addEventListener('init', initCanvas);
 
         const animate = () => {
 
@@ -73,9 +74,9 @@ const AppBackground = ({ numStars = 400, animation = true, glow = animation, tra
 
         return () => {
             cancelAnimationFrame(animationRef.current);
-            window.removeEventListener('resize', resizeCanvas);
+            window.removeEventListener('init', initCanvas);
         };
-    }, [numStars, glow, trails, animation]);
+    }, [animation]);
 
 
     return (
