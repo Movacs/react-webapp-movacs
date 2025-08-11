@@ -14,7 +14,7 @@ type Props = {
 export default function ButtonAppBar({ toggleAnimation }: Props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" sx={{ backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(2px)", boxShadow: "none", }}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -25,9 +25,6 @@ export default function ButtonAppBar({ toggleAnimation }: Props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
-                    </Typography>
                     <Button onClick={toggleAnimation} color="inherit">Animation</Button>
                 </Toolbar>
             </AppBar>
