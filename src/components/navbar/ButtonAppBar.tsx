@@ -14,7 +14,7 @@ type Props = {
 export default function ButtonAppBar({ toggleAnimation }: Props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(2px)", boxShadow: "none", }}>
+            <AppBar position="fixed" sx={{ backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(2px)", boxShadow: "none", }}>
                 <Toolbar>
                     <IconButton
                         size="large"
