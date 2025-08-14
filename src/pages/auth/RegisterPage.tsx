@@ -1,4 +1,6 @@
+import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import './RegisterPage.css';
 
 export default function RegisterPage() {
     const [form, setForm] = useState({
@@ -19,62 +21,56 @@ export default function RegisterPage() {
     };
 
     return (
-        <div style={{ maxWidth: 400, margin: "auto", padding: 24 }}>
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                        Username
-                        <input
-                            type="text"
-                            name="username"
-                            value={form.username}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="100vh"
+            sx={{ color: 'text.primary' }}
+        >
+            <Box
+                sx={{
+                    p: 4,
+                    bgcolor: "white",
+                    borderRadius: 2,
+                    boxShadow: 3,
+                    width: 300,
+                    backgroundColor: "rgba(255,255,255,1)",
+
+                }}
+            >
+                <div className="register-text">
+                    <h2>Registration</h2>
                 </div>
-                <div>
-                    <label>
-                        Email
-                        <input
-                            type="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Password
-                        <input
-                            type="password"
-                            name="password"
-                            value={form.password}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Confirm Password
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            value={form.confirmPassword}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                </div>
-                <button type="submit" style={{ marginTop: 16 }}>
+                <TextField
+                    label="Email address"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    sx={{ marginBottom: 1 }}
+                    type='email'
+                />
+                <TextField
+                    label="Username"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    sx={{ marginBottom: 1 }}
+                />
+                <TextField
+                    label="Password"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    sx={{ marginBottom: 5 }}
+                    type="password"
+                />
+                <Button variant="contained" color="primary" fullWidth>
                     Register
-                </button>
-            </form>
-        </div>
+                </Button>
+                <p>Already a member? <a href='/login'>Log In</a></p>
+            </Box>
+        </Box>
     );
 };
 

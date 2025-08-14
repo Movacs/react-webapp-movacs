@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import './LoginPage.css';
 
 
 export default function LoginPage() {
@@ -20,7 +21,7 @@ export default function LoginPage() {
             justifyContent="center"
             alignItems="center"
             minHeight="100vh"
-
+            sx={{ color: 'text.primary' }}
         >
             <Box
                 sx={{
@@ -31,21 +32,28 @@ export default function LoginPage() {
                     width: 300,
                 }}
             >
+                <div className='login-text'>
+                    <h2>Log In</h2>
+                </div>
                 <TextField
-                    label="Első mező"
+                    label="Username"
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    sx={{ marginBottom: 1 }}
                 />
                 <TextField
-                    label="Második mező"
+                    label="Password"
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    sx={{ marginBottom: 5 }}
+                    type="password"
                 />
                 <Button variant="contained" color="primary" fullWidth>
-                    Küldés
+                    Log in
                 </Button>
+                <p>Not a member? <a href='/register'>Register</a></p>
             </Box>
         </Box>
     );
